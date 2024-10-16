@@ -57,7 +57,7 @@
                         <form action="{{ route('admin.auth') }}" method="post">
                             @csrf
                             <div class="form-floating mb-3">
-                               <input type="text" class="form-control" id="floatingInput" name="username" placeholder="Username">
+                               <input type="text" class="form-control" id="floatingInput" name="username" placeholder="Username" value="{{ old('username') }}">
                                <label for="floatingInput">Username</label>
                                <div class="text-danger">
                                @error('username')

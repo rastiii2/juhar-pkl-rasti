@@ -1,42 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class AdminLoginController extends Controller
+class GuruController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function login()
+    public function guru()
     {
-        return view('auth.admin_login');
+        return view('admin.guru');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function auth(Request $request)
+    public function create()
     {
-        $credentials = $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-        ]);
-
-        if (Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->route('admin.dashboard');
-        }
-
-        return back()->withErrors(['login_error' => 'Username atau Password Salah.'])->onlyInput('username');
-    }
-
-    public function logout(Request $request)
-    {
-        Auth::logout();
-        return redirect('/admin/login');
+        //
     }
 
     /**
