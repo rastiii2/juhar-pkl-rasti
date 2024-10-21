@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Dudi')
+@section('title', 'Pembimbing')
 
 @section('content')
 
@@ -12,27 +12,27 @@
                 {{ session('success') }}
             </div>
             @endif
-            <h6 class="mb-4">Data Dudi</h6>
+            <h6 class="mb-4">Data Pembimbing</h6>
             <div class="table-responsive">
-                <a href="{{ route('admin.dudi.create') }}" class="btn btn-primary btn-sm">Tambah</a>
-                <table class="table" id="dudi">
+                <a href="{{ route('admin.pembimbing.create') }}" class="btn btn-primary btn-sm">Tambah</a>
+                <table class="table" id="pembimbing">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
+                            <th scope="col">Nama Guru</th>
                             <th scope="col">Nama Dudi</th>
-                            <th scope="col">Alamat Dudi</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($dudis as $dudi)
+                        @foreach ($pembimbings as $pembimbing)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $dudi->nama_dudi }}</td>
-                            <td>{{ $dudi->alamat_dudi }}</td>
+                            <td>{{ $pembimbing->guru->nama_guru }}</td>
+                            <td>{{ $pembimbing->dudi->nama_dudi }}</td>
                             <td>
-                                <a href="{{ route('admin.dudi.edit', $dudi->id_dudi) }}" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="{{ route('admin.dudi.delete', $dudi->id_dudi) }}" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm">Hapus</a>
+                                <a href="{{ route('admin.pembimbing.edit', $pembimbing->id_pembimbing) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="{{ route('admin.pembimbing.delete', $pembimbing->id_pembimbing) }}" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm">Hapus</a>
                             </td>
                         </tr>
                         @endforeach
@@ -45,7 +45,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#dudi').DataTable();
+        $('#pembimbing').DataTable();
     });
 </script>
 

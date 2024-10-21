@@ -60,7 +60,7 @@
                     <a href="{{ route('admin.dashboard') }}" class="nav-item nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="{{ route('admin.guru') }}" class="nav-item nav-link {{ request()->routeIs('admin.guru') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Guru</a>
                     <a href="{{ route('admin.dudi') }}" class="nav-item nav-link {{ request()->routeIs('admin.dudi') ? 'active' : '' }}"><i class="fa fa-keyboard me-2"></i>Dudi</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Pembimbing</a>
+                    <a href="{{ route('admin.pembimbing') }}" class="nav-item nav-link {{ request()->routeIs('admin.pembimbing') ? 'active' : '' }}"><i class="fa fa-table me-2"></i>Pembimbing</a>
                 </div>
             </nav>
         </div>
