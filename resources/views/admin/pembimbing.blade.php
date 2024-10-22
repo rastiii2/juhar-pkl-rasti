@@ -33,6 +33,7 @@
                             <td>
                                 <a href="{{ route('admin.pembimbing.edit', $pembimbing->id_pembimbing) }}" class="btn btn-warning btn-sm">Edit</a>
                                 <a href="{{ route('admin.pembimbing.delete', $pembimbing->id_pembimbing) }}" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm">Hapus</a>
+                                <a href="{{ route('admin.pembimbing.siswa', $pembimbing->id_pembimbing) }}"  class="btn btn-info btn-sm">Siswa</a>
                             </td>
                         </tr>
                         @endforeach
