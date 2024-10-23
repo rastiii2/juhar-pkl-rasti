@@ -35,7 +35,7 @@ class GuruController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nip' => 'required|unique:guru,nip|digits:18',
+            'nip' => 'nullable|unique:guru,nip|digits:18',
             'email' => 'required|email|unique:guru,email',
             'password' => 'required|min:6',
             'nama_guru' => 'required',
@@ -105,7 +105,7 @@ class GuruController extends Controller
         $guru = Guru::find($id);
 
         $request->validate([
-            'nip' => 'required|digits:18|unique:guru,nip,' . $guru->id_guru . ',id_guru',
+            'nip' => 'nullable|digits:18|unique:guru,nip,' . $guru->id_guru . ',id_guru',
             'email' => 'required|email|unique:guru,email,' . $guru->id_guru . ',id_guru',
             'password' => 'nullable|min:6',
             'nama_guru' => 'required',

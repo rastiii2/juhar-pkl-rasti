@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>JUHAR PKL - Admin Login</title>
+    <title>JUHAR PKL - Guru Login</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -49,18 +49,18 @@
                         </div>
                         @endif
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="{{ route('admin.login') }}" class="">
+                            <a href="{{ route('guru.login') }}" class="">
                                 <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>JUHAR</h3>
                             </a>
                             <h3>Sign In</h3>
                         </div>
-                        <form action="{{ route('admin.auth') }}" method="post">
+                        <form action="{{ route('guru.auth') }}" method="post">
                             @csrf
                             <div class="form-floating mb-3">
-                               <input type="text" class="form-control" id="floatingInput" name="username" placeholder="Username" value="{{ old('username') }}">
-                               <label for="floatingInput">Username</label>
+                               <input type="text" class="form-control" id="floatingInput" name="nip_or_email" placeholder="Nip atau Email" value="{{ old('nip_or_email') }}">
+                               <label for="floatingInput">NIP atau Email</label>
                                <div class="text-danger">
-                               @error('username')
+                               @error('nip_or_email')
                                {{ $message}}
                                @enderror
                                </div>

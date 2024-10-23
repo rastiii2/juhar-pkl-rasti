@@ -55,8 +55,8 @@
                                 <img src="{{ asset('storage/' . $siswa->foto) }}" alt="" height="30">
                             </td>
                             <td>
-                                <a href="" class="btn btn-warning btn-sm">Edit</a>
-                                <a href=""  onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm">Hapus</a>
+                                <a href="{{ route('admin.pembimbing.siswa.edit', ['id' => $id, 'id_siswa' => $siswa->id_siswa ]) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="{{ route('admin.pembimbing.siswa.delete', ['id' => $id, 'id_siswa' => $siswa->id_siswa ]) }}"  onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm">Hapus</a>
                             </td>
                         </tr>
                         @endforeach
