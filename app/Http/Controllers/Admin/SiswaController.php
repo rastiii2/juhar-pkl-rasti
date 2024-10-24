@@ -135,4 +135,11 @@ class SiswaController extends Controller
     {
         //
     }
+
+    public function siswaGuru($id)
+    {
+        $siswas = Siswa::where('id_pembimbing', $id)->get();
+        $siswa = Siswa::where('id_pembimbing', $id)->first();
+        return view('guru.siswa', compact('siswas', 'siswa', 'id'));
+    }
 }
