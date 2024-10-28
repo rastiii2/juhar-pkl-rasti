@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class Unauthorized
+class Siswa
 {
     /**
      * Handle an incoming request.
@@ -16,12 +16,9 @@ class Unauthorized
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::guard('admin')->check()) {
-            return redirect()->route('admin.dashboard');
-        } elseif (Auth::guard('guru')->check()) {
-            return redirect()->route('guru.dashboard');
-        } elseif (Auth::guard('siswa')->check()) {
-            return redirect()->route('siswa.dashboard');
+        if (!Auth::guard('siswa')->check()) {
+            return redirect()->route('siswa.login')
+                             ->withErrors(['login_error' => 'Silakan masuk untuk melanjutkan.']);
         }
         return $next($request);
     }

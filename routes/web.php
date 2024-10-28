@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PembimbingController;
 use App\Http\Controllers\Admin\SiswaController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\GuruLoginController;
+use App\Http\Controllers\Auth\SiswaLoginController;
 use App\Models\Admin\Dudi;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,9 @@ Route::middleware(['guest'])->group(function () {
 
     Route::get('/guru/login', [GuruLoginController::class, 'login'])->name('guru.login');
     Route::post('/guru/login', [GuruLoginController::class, 'auth'])->name('guru.auth');
+
+    Route::get('/siswa/login', [SiswaLoginController::class, 'login'])->name('siswa.login');
+    Route::post('/siswa/login', [SiswaLoginController::class, 'auth'])->name('siswa.auth');
 });
 
 
@@ -57,12 +61,11 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/pembimbing/{id}/siswa/edit/{id_siswa}', [SiswaController::class, 'edit'])->name('admin.pembimbing.siswa.edit');
     Route::put('/admin/pembimbing/{id}/siswa/edit/{id_siswa}', [SiswaController::class, 'update'])->name('admin.pembimbing.siswa.update');
     Route::get('/admin/pembimbing/{id}/siswa/delete/{id_siswa}', [SiswaController::class, 'delete'])->name('admin.pembimbing.siswa.delete');
-
 });
 
 Route::middleware(['guru'])->group(function () {
     Route::get('/guru/dashboard', [GuruController::class, 'dashboard'])->name('guru.dashboard');
-    Route::get('/guru/logout', [GuruController::class, 'logout'])->name('guru.logout'); 
+    Route::get('/guru/logout', [GuruController::class, 'logout'])->name('guru.logout');
     Route::get('/guru/profile', [GuruController::class, 'profile'])->name('guru.profile');
     Route::put('/guru/profile/upadate', [GuruController::class, 'updateGuru'])->name('guru.profile.update');
 
@@ -70,14 +73,18 @@ Route::middleware(['guru'])->group(function () {
     Route::get('/guru/pembimbing/{id}/siswa', [SiswaController::class, 'siswaGuru'])->name('guru.pembimbing.siswa');
     Route::get('/guru/pembimbing/{id}/siswa/{id_siswa}/kegiatan', [KegiatanController::class, 'kegiatan'])->name('guru.pembimbing.siswa.kegiatan');
     Route::get('/guru/pembimbing/{id}/siswa/{id_siswa}/kegiatan/detail/{id_kegiatan}', [KegiatanController::class, 'detailKegiatan'])->name('guru.pembimbing.siswa.kegiatan.detail');
-  
+
 });
+
+Route::middleware(['siswa'])->group(function () {
+    Route::get('/siswa/dashboard', [SiswaController::class, 'dashboard'])->name('siswa.dashboard');
+    Route::get('/siswa/kegiatan', [SiswaController::class, 'kegiatan'])->name('siswa.kegiatan');
+    Route::get('/siswa/logout', [SiswaController::class, 'logout'])->name('siswa.logout');
+
+    Route::get('/siswa/kegiatan', [SiswaController::class, 'kegiatanSiswa'])->name('siswa.kegiatan');
+    Route::get('/siswa/kegiatan/tambah', [SiswaController::class, 'createKegiatan'])->name('siswa.kegiatan.create');
+    Route::post('/siswa/kegiatan/tambah', [SiswaController::class, 'storeKegiatan'])->name('siswa.kegiatan.store');
     
-    
 
 
-
-
-
-
-
+});

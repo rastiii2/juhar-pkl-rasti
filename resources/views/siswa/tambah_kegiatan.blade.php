@@ -1,50 +1,41 @@
-@extends('admin.layouts.app')
+@extends('siswa.layouts.app')
 
-@section('title', 'Tambah Guru')
+@section('title', 'Tambah Kegiatan')
 
 @section('content')
 
 <div class="row g-4">
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">
-            <h6 class="mb-4">TAMBAH GURU</h6>
-            <form action="{{ route('admin.guru.store') }}" method="post" enctype="multipart/form-data">
+            <h6 class="mb-4">TAMBAH KEGIATAN</h6>
+            <form action="{{ route('siswa.kegiatan.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="nip" class="form-label">NIP</label>
-                    <input type="text" class="form-control" id="nip" name="nip">
+                    <label for="tanggal_kegiatan" class="form-label">Tanggal Kegiatan</label>
+                    <input type="date" class="form-control" id="tanggal_kegiatan" name="tanggal_kegiatan">
                     <div class="text-danger">
-                        @error('nip')
+                        @error('tanggal_kegiatan')
                         {{ $message }}
                         @enderror
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email">
+                    <label for="nama_kegiatan" class="form-label">Nama Kegiatan</label>
+                    <input type="text" class="form-control" id="nama_kegiatan" name="nama_kegiatan">
                     <div class="text-danger">
-                        @error('email')
+                        @error('nama_kegiatan')
                         {{ $message }}
                         @enderror
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password">
+                    <label for="ringkasan_kegiatan" class="form-label">Ringkasan Kegiatan</label>
+                    <textarea class="form-control" rows="5" name="ringkasan_kegiatan"></textarea>
                     <div class="text-danger">
-                        @error('password')
+                        @error('ringkasan_kegiatan')
                         {{ $message }}
                         @enderror
                     </div>
-                </div>
-                <div class="mb-3">
-                    <label for="nama_guru" class="form-label">Nama Guru</label>
-                    <input type="text" class="form-control" id="nama_guru" name="nama_guru">
-                    <div class="text-danger">
-                        @error('nama_guru')
-                        {{ $message }}
-                        @enderror
-                    </div> 
                 </div>
                 <div class="mb-3">
                     <label for="foto" class="form-label">Foto</label>

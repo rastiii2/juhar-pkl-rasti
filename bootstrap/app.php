@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\Guru;
+use App\Http\Middleware\Siswa;
 use App\Http\Middleware\Unauthorized;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -18,6 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'guest' => Unauthorized::class,
             'admin' => Admin::class,
             'guru' => Guru::class,
+            'siswa' => Siswa::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
