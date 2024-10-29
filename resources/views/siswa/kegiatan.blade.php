@@ -21,7 +21,6 @@
                             <th scope="col">No</th>
                             <th scope="col">Tanggal Kegiatan</th>
                             <th scope="col">Nama Kegiatan</th>
-                            <th scope="col">Ringkasan Kegiatan</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -31,11 +30,10 @@
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $kegiatan->tanggal_kegiatan }}</td>
                             <td>{{ $kegiatan->nama_kegiatan }}</td>
-                            <td>{{ $kegiatan->ringkasan_kegiatan }}</td>
                             <td>
-                                <a href="" class="btn btn-info btn-sm">Edit</a>
-                                <a href="" class="btn btn-info btn-sm">Hapus</a>
-                                <a href="" class="btn btn-info btn-sm">Detail</a>
+                                <a href="{{ route('siswa.kegiatan.edit', ['id_kegiatan' => $kegiatan->id_kegiatan]) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="{{ route('siswa.kegiatan.delete', ['id_kegiatan' => $kegiatan->id_kegiatan]) }}" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm">Hapus</a>
+                                <a href="{{ route('siswa.kegiatan.detail', ['id_kegiatan' => $kegiatan->id_kegiatan]) }}" class="btn btn-info btn-sm">Detail</a>
                             </td>
                         </tr>
                         @endforeach
