@@ -3,6 +3,13 @@
 @section('title', 'Detail Kegiatan')
 
 @section('content')
+
+@if ($errors->has('access'))
+<div class="alert alert-danger">
+    {{ $errors->first('access') }}
+</div>
+@endif
+
 @if($kegiatan)
 <div class="row bg-light rounded align-items-center mx-0">
     <div class="col-md-6 p-3">

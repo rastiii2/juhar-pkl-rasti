@@ -4,6 +4,12 @@
 
 @section('content')
 
+@if ($errors->has('access'))
+<div class="alert alert-danger">
+    {{ $errors->first('access') }}
+</div>
+@endif
+
 <div class="row g-4">
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">

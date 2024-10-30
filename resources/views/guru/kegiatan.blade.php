@@ -4,6 +4,27 @@
 
 @section('content')
 
+@if ($errors->has('access'))
+<div class="alert alert-danger">
+    {{ $errors->first('access') }}
+</div>
+@endif
+
+@if($kegiatan)
+<div class="row bg-light rounded align-items-center mx-0">
+    <div class="col-md-6 p-3">
+        <table>
+            <tr>
+                <td width="100">Nama Siswa</td>
+                <td width="10">:</td>
+                <td>{{ $kegiatan->kegiatanSiswa->nama_siswa }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br>
+@endif
+
 <div class="row g-4">
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">
@@ -12,21 +33,8 @@
                 {{ session('success') }}
             </div>
             @endif
-            @if($kegiatan)
 
-            <div class="row bg-light rounded align-items-center mx-0">
-                <div class="col-md-6 p-3">
-                    <table>
-                        <tr>
-                            <td width="100">Nama Siswa</td>
-                            <td width="10">:</td>
-                            <td>{{ $kegiatan->kegiatanSiswa->nama_siswa }}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <br>
-            @endif
+
             <h6 class="mb-4">Data Kegiatan</h6>
             <div class="table-responsive">
                 <form action="{{ route('guru.pembimbing.siswa.kegiatan.cari', ['id' => $id_pembimbing, 'id_siswa' => $id_siswa]) }}" method="GET" class="row g-3">
